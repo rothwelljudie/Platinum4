@@ -23,7 +23,7 @@ module.exports = function (source, cb) {
     const dataFn = require(filename)
 
     if (typeof dataFn !== 'function') {
-      throw new Error('The database is a JavaScript file but the export is not a function.')
+      throw new TypeError('The database is a JavaScript file but the export is not a function.')
     }
 
     // Run dataFn to generate data

@@ -1,6 +1,7 @@
 const express = require('express')
 const url = require('url')
 const _ = require('lodash')
+
 function updateQueryString (target, sourceUrl) {
   return ~sourceUrl.indexOf('?') ? _.assign(target, url.parse(sourceUrl, true).query) : {}
 }
@@ -16,7 +17,7 @@ module.exports = (routes) => {
       router.all(route, (req, res, next) => {
         // Rewrite target url using params
         let target = routes[route]
-        for (let param in req.params) {
+        for (const param in req.params) {
           target = target.replace(':' + param, req.params[param])
         }
         req.url = target

@@ -42,14 +42,14 @@ function createId (coll) {
   const idProperty = _.__id()
   if (_.isEmpty(coll)) {
     return 1
-  } else {
-    let id = _(coll).maxBy(idProperty)[idProperty]
+  } 
+  let id = _(coll).maxBy(idProperty)[idProperty]
 
     // Increment integer id or generate string id
-    return _.isFinite(id)
+  return _.isFinite(id)
       ? ++id
       : shortid.generate()
-  }
+  
 }
 
 function deepQuery (value, q) {
@@ -62,7 +62,7 @@ function deepQuery (value, q) {
         }
       }
     } else if (_.isObject(value) && !_.isArray(value)) {
-      for (let k in value) {
+      for (const k in value) {
         if (_.deepQuery(value[k], q)) {
           return true
         }

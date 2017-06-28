@@ -41,7 +41,7 @@ module.exports = function (opts) {
   }
 
   if (process.env.NODE_ENV === 'development') {
-    // only use in development
+    // Only use in development
     arr.push(errorhandler())
   }
 

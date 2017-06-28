@@ -17,14 +17,14 @@ function prettyPrint (argv, object, rules) {
 
   console.log()
   console.log(chalk.bold('  Resources'))
-  for (let prop in object) {
+  for (const prop in object) {
     console.log('  ' + root + '/' + prop)
   }
 
   if (rules) {
     console.log()
     console.log(chalk.bold('  Other routes'))
-    for (var rule in rules) {
+    for (const rule in rules) {
       console.log('  ' + rule + ' -> ' + rules[rule])
     }
   }
@@ -96,7 +96,7 @@ module.exports = function (argv) {
     process.exit(1)
   }
 
-  // noop log fn
+  // Noop log fn
   if (argv.quiet) {
     console.log = () => {}
   }
@@ -131,7 +131,7 @@ module.exports = function (argv) {
       // Load middlewares
       let middlewares
       if (argv.middlewares) {
-        middlewares = argv.middlewares.map(function (m) {
+        middlewares = argv.middlewares.map((m) => {
           console.log(chalk.gray('  Loading', m))
           return require(path.resolve(m))
         })

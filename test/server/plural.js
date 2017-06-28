@@ -553,7 +553,7 @@ describe('Server', () => {
         .type('form')
         .send({body: 'foo', booleanValue: true, integerValue: 1})
         .expect('Content-Type', /json/)
-        // x-www-form-urlencoded will convert to string
+        // X-www-form-urlencoded will convert to string
         .expect({id: 3, body: 'foo', booleanValue: 'true', integerValue: '1'})
         .expect(201)
       assert.equal(db.posts.length, 3)
@@ -586,7 +586,7 @@ describe('Server', () => {
       const res = await request(server)
         .put('/posts/1')
         .set('Accept', 'application/json')
-        // body property omitted to test that the resource is replaced
+        // Body property omitted to test that the resource is replaced
         .send(post)
         .expect('Content-Type', /json/)
         .expect(post)
@@ -594,7 +594,7 @@ describe('Server', () => {
       // TODO find a "supertest" way to test this
       // https://github.com/typicode/json-server/issues/396
       assert.deepStrictEqual(res.body, post)
-      // assert it was created in database too
+      // Assert it was created in database too
       assert.deepStrictEqual(db.posts[0], post)
     })
 
@@ -619,7 +619,7 @@ describe('Server', () => {
         .expect(post)
         .expect(200)
       assert.deepStrictEqual(res.body, post)
-      // assert it was created in database too
+      // Assert it was created in database too
       assert.deepStrictEqual(db.posts[0], post)
     })
 

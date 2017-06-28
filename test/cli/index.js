@@ -164,7 +164,7 @@ describe('cli', () => {
 
     it('should delay response', (done) => {
       const start = new Date()
-      request.get('/posts').expect(200, function (err) {
+      request.get('/posts').expect(200, (err) => {
         const end = new Date()
         done(
           end - start > 1000
@@ -232,7 +232,7 @@ describe('cli', () => {
     it('should not set Content-Encoding to gzip', (done) => {
       request.get('/posts')
         .expect(200)
-        .end(function (err, res) {
+        .end((err, res) => {
           if (err) {
             done(err)
           } else if ('content-encoding' in res.headers) {

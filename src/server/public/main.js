@@ -1,22 +1,22 @@
 /* global m */
 
 // Resource list
-var db = {}
+let db = {}
 
-m.request('db').then(function (data) {
+m.request('db').then((data) => {
   db = data
 })
 
 m.mount(
   document.getElementById('resources'),
   {
-    view: function () {
-      var keys = Object.keys(db)
-      var resourceList = (
+    view () {
+      const keys = Object.keys(db)
+      const resourceList = (
         m(
           'ul',
           keys
-            .map(function (key) {
+            .map((key) => {
               return m('li', [
                 m('a', { href: key }, '/' + key),
                 m('sup', Array.isArray(db[key])
@@ -43,21 +43,21 @@ m.mount(
 )
 
 // Custom routes
-var customRoutes = {}
+let customRoutes = {}
 
-m.request('__rules').then(function (data) {
+m.request('__rules').then((data) => {
   customRoutes = data
 })
 
 m.mount(
   document.getElementById('custom-routes'),
   {
-    view: function () {
-      var rules = Object.keys(customRoutes)
+    view () {
+      const rules = Object.keys(customRoutes)
       if (rules.length) {
         return [
           m('h4', 'Custom routes'),
-          m('table', rules.map(function (rule) {
+          m('table', rules.map((rule) => {
             return m('tr', [
               m('td', rule),
               m('td', '⇢ ' + customRoutes[rule])

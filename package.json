@@ -15,6 +15,7 @@
     "cors": "^2.3.0",
     "errorhandler": "^1.2.0",
     "express": "^4.9.5",
+    "is-utf8": "^0.2.1",
     "json-parse-helpfulerror": "^1.0.3",
     "lodash": "^4.11.2",
     "lodash-id": "^0.13.0",
@@ -34,20 +35,24 @@
     "babel-preset-env": "^1.3.2",
     "babel-register": "^6.16.3",
     "cross-env": "^2.0.1",
+    "eslint-config-prettier": "^2.2.0",
+    "eslint-plugin-prettier": "^2.1.2",
     "husky": "^0.14.1",
     "markdown-toc": "^0.13.0",
     "mkdirp": "^0.5.1",
     "mocha": "^3.2.0",
     "os-tmpdir": "^1.0.1",
     "pkg-ok": "^1.0.1",
+    "prettier": "^1.5.2",
     "rimraf": "^2.5.2",
     "server-ready": "^0.3.1",
     "standard": "^8.3.0",
     "supertest": "^3.0.0",
-    "temp-write": "^2.1.0"
+    "temp-write": "^2.1.0",
+    "xo": "^0.18.2"
   },
   "scripts": {
-    "test": "npm run test:cli && npm run test:server && standard",
+    "test": "xo && npm run test:cli && npm run test:server && standard",
     "test:cli": "npm run build && cross-env NODE_ENV=test mocha test/cli/*.js",
     "test:server": "cross-env NODE_ENV=test mocha test/server/*.js",
     "start": "babel-node src/cli/bin",
@@ -90,5 +95,15 @@
   },
   "engines": {
     "node": ">= 4"
+  },
+  "xo": {
+    "semicolon": false,
+    "space": true,
+    "extend": "prettier",
+    "plugin": "prettier",
+    "envs": [
+      "node",
+      "mocha"
+    ]
   }
 }
