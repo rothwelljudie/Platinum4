@@ -98,9 +98,11 @@
   },
   "xo": {
     "semicolon": false,
-    "space": true,
     "extend": "prettier",
     "plugin": "prettier",
+    "rules": [
+      "prettier/prettier": "error"
+    ],
     "envs": [
       "node",
       "mocha"
